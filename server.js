@@ -4,8 +4,11 @@ const { log } = require('console');
 const express = require('express');
 const path = require('path');
 
-//load student file
+//load data files
 const student = require('./data/students');
+const car = require('./data/carMakers');
+const game = require('./data/games');
+const stock = require('./data/stocks');
 
 //setting app to express function
 const app = express();
@@ -17,7 +20,7 @@ app.set('views', path.join(__dirname, 'views'));
 //root route
 app.get('/', function (req, res) {
   //redirects to student list page
-  res.redirect('/students');
+  res.render('home');
 });
 
 //renders student list
@@ -26,6 +29,19 @@ app.get('/students', function (req, res) {
   const students = student.getAll();
   //displays content with student data and studentList view
   res.render('studentList', { students });
+});
+
+app.get('/cars', function (req, res) {
+  const cars = car.getAll();
+  res.render('carList', { cars });
+});
+app.get('/games', function (req, res) {
+  const games = game.getAll();
+  res.render('gameList', { games });
+});
+app.get('/stocks', function (req, res) {
+  const stocks = stock.getAll();
+  res.render('stockList', { stocks });
 });
 
 //listens for port 3000
