@@ -7,8 +7,10 @@
   </head>
   <body>
     <h1>Students Attending:</h1>
-    <ul>
-      <%= %>
-    </ul>
+    <ol>
+      <% students.forEach(function(s){ %>
+      <li><%= s.name %></li>
+      <% }); %>
+    </ol>
   </body>
 </html>
