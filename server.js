@@ -31,14 +31,19 @@ app.get('/students', function (req, res) {
   res.render('studentList', { students });
 });
 
+//renders car list
 app.get('/cars', function (req, res) {
   const cars = car.getAll();
   res.render('carList', { cars });
 });
+
+//renders game list
 app.get('/games', function (req, res) {
   const games = game.getAll();
   res.render('gameList', { games });
 });
+
+//renders stock list
 app.get('/stocks', function (req, res) {
   const stocks = stock.getAll();
   res.render('stockList', { stocks });
